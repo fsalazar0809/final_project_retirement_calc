@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_25_154927) do
+ActiveRecord::Schema.define(version: 2020_03_09_143423) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -36,6 +36,62 @@ ActiveRecord::Schema.define(version: 2019_10_25_154927) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "budget_calculators", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.integer "monthly_income__salarywages"
+    t.integer "monthly_income__other_income"
+    t.integer "housing_expenses__mortgage"
+    t.integer "housing_expenses__hoa_fees"
+    t.integer "housing_expenses__rent"
+    t.integer "housing_expenses__home_insurance"
+    t.integer "housing_expenses__repairs_maintenance"
+    t.integer "housing_expenses__water__gas__electricity"
+    t.integer "housing_expenses__cable__tv__internet"
+    t.integer "housing_expenses__phone_cell"
+    t.string "user_id"
+    t.integer "transportation_expenses__car_payment"
+    t.integer "transportation_expenses__car_insurance"
+    t.integer "transportation_expenses__gas__fuel"
+    t.integer "transportation_expenses__car_repairs"
+    t.integer "educational_expenses__school_supplies"
+    t.integer "educational_expenses__student_loans"
+    t.string "educational_expenses__college_tuition"
+    t.integer "food_and_personal__groceries__household"
+    t.integer "food_and_personal__clothing"
+    t.integer "food_and_personal__entertainment"
+    t.integer "food_and_personal__medical"
+    t.integer "food_and_personal__pet_supplies"
+    t.integer "food_and_personal__other_expenses"
+    t.integer "monthly_savings__emergency_fund"
+    t.integer "monthly_savings__investments"
+    t.integer "monthly_spend__budget"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "personal_informations", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.integer "current_age"
+    t.integer "retirement_age"
+    t.float "retirement_savings"
+    t.float "return_on_savings"
+    t.integer "life_expectancy"
+    t.integer "monthly_contribution"
+    t.integer "user_id"
+    t.integer "budget_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

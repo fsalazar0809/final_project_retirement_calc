@@ -1,0 +1,227 @@
+<div >
+  <h5>
+    Edit Budget Calculator Account
+  </h5>
+
+  <% if @budget_calculator.errors.any? %>
+  <% @budget_calculator.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+  <% end %>
+  <div>
+    <form action="/modify_budget_calculator" method="post">
+              
+      <div>
+        <label for="email_box">Email</label>
+          
+        <input id="email_box" name="query_email" value="<%= @current_budget_calculator.email %>">
+          
+      </div>
+                                    
+      <div>
+        <label for="monthly_income__salarywages_box">Monthly income  salarywages</label>
+          
+        <input id="monthly_income__salarywages_box" name="query_monthly_income__salarywages" value="<%= @current_budget_calculator.monthly_income__salarywages %>">
+          
+      </div>
+                      
+      <div>
+        <label for="monthly_income__other_income_box">Monthly income  other income</label>
+          
+        <input id="monthly_income__other_income_box" name="query_monthly_income__other_income" value="<%= @current_budget_calculator.monthly_income__other_income %>">
+          
+      </div>
+                      
+      <div>
+        <label for="housing_expenses__mortgage_box">Housing expenses  mortgage</label>
+          
+        <input id="housing_expenses__mortgage_box" name="query_housing_expenses__mortgage" value="<%= @current_budget_calculator.housing_expenses__mortgage %>">
+          
+      </div>
+                      
+      <div>
+        <label for="housing_expenses__hoa_fees_box">Housing expenses  hoa fees</label>
+          
+        <input id="housing_expenses__hoa_fees_box" name="query_housing_expenses__hoa_fees" value="<%= @current_budget_calculator.housing_expenses__hoa_fees %>">
+          
+      </div>
+                      
+      <div>
+        <label for="housing_expenses__rent_box">Housing expenses  rent</label>
+          
+        <input id="housing_expenses__rent_box" name="query_housing_expenses__rent" value="<%= @current_budget_calculator.housing_expenses__rent %>">
+          
+      </div>
+                      
+      <div>
+        <label for="housing_expenses__home_insurance_box">Housing expenses  home insurance</label>
+          
+        <input id="housing_expenses__home_insurance_box" name="query_housing_expenses__home_insurance" value="<%= @current_budget_calculator.housing_expenses__home_insurance %>">
+          
+      </div>
+                      
+      <div>
+        <label for="housing_expenses__repairs_maintenance_box">Housing expenses  repairs maintenance</label>
+          
+        <input id="housing_expenses__repairs_maintenance_box" name="query_housing_expenses__repairs_maintenance" value="<%= @current_budget_calculator.housing_expenses__repairs_maintenance %>">
+          
+      </div>
+                      
+      <div>
+        <label for="housing_expenses__water__gas__electricity_box">Housing expenses  water  gas  electricity</label>
+          
+        <input id="housing_expenses__water__gas__electricity_box" name="query_housing_expenses__water__gas__electricity" value="<%= @current_budget_calculator.housing_expenses__water__gas__electricity %>">
+          
+      </div>
+                      
+      <div>
+        <label for="housing_expenses__cable__tv__internet_box">Housing expenses  cable  tv  internet</label>
+          
+        <input id="housing_expenses__cable__tv__internet_box" name="query_housing_expenses__cable__tv__internet" value="<%= @current_budget_calculator.housing_expenses__cable__tv__internet %>">
+          
+      </div>
+                      
+      <div>
+        <label for="housing_expenses__phone_cell_box">Housing expenses  phone cell</label>
+          
+        <input id="housing_expenses__phone_cell_box" name="query_housing_expenses__phone_cell" value="<%= @current_budget_calculator.housing_expenses__phone_cell %>">
+          
+      </div>
+                      
+      <div>
+        <label for="user_id_box">User</label>
+          
+        <input id="user_id_box" name="query_user_id" value="<%= @current_budget_calculator.user_id %>">
+          
+      </div>
+                      
+      <div>
+        <label for="transportation_expenses__car_payment_box">Transportation expenses  car payment</label>
+          
+        <input id="transportation_expenses__car_payment_box" name="query_transportation_expenses__car_payment" value="<%= @current_budget_calculator.transportation_expenses__car_payment %>">
+          
+      </div>
+                      
+      <div>
+        <label for="transportation_expenses__car_insurance_box">Transportation expenses  car insurance</label>
+          
+        <input id="transportation_expenses__car_insurance_box" name="query_transportation_expenses__car_insurance" value="<%= @current_budget_calculator.transportation_expenses__car_insurance %>">
+          
+      </div>
+                      
+      <div>
+        <label for="transportation_expenses__gas__fuel_box">Transportation expenses  gas  fuel</label>
+          
+        <input id="transportation_expenses__gas__fuel_box" name="query_transportation_expenses__gas__fuel" value="<%= @current_budget_calculator.transportation_expenses__gas__fuel %>">
+          
+      </div>
+                      
+      <div>
+        <label for="transportation_expenses__car_repairs_box">Transportation expenses  car repairs</label>
+          
+        <input id="transportation_expenses__car_repairs_box" name="query_transportation_expenses__car_repairs" value="<%= @current_budget_calculator.transportation_expenses__car_repairs %>">
+          
+      </div>
+                      
+      <div>
+        <label for="educational_expenses__school_supplies_box">Educational expenses  school supplies</label>
+          
+        <input id="educational_expenses__school_supplies_box" name="query_educational_expenses__school_supplies" value="<%= @current_budget_calculator.educational_expenses__school_supplies %>">
+          
+      </div>
+                      
+      <div>
+        <label for="educational_expenses__student_loans_box">Educational expenses  student loans</label>
+          
+        <input id="educational_expenses__student_loans_box" name="query_educational_expenses__student_loans" value="<%= @current_budget_calculator.educational_expenses__student_loans %>">
+          
+      </div>
+                      
+      <div>
+        <label for="educational_expenses__college_tuition_box">Educational expenses  college tuition</label>
+          
+        <input id="educational_expenses__college_tuition_box" name="query_educational_expenses__college_tuition" value="<%= @current_budget_calculator.educational_expenses__college_tuition %>">
+          
+      </div>
+                      
+      <div>
+        <label for="food_and_personal__groceries__household_box">Food and personal  groceries  household</label>
+          
+        <input id="food_and_personal__groceries__household_box" name="query_food_and_personal__groceries__household" value="<%= @current_budget_calculator.food_and_personal__groceries__household %>">
+          
+      </div>
+                      
+      <div>
+        <label for="food_and_personal__clothing_box">Food and personal  clothing</label>
+          
+        <input id="food_and_personal__clothing_box" name="query_food_and_personal__clothing" value="<%= @current_budget_calculator.food_and_personal__clothing %>">
+          
+      </div>
+                      
+      <div>
+        <label for="food_and_personal__entertainment_box">Food and personal  entertainment</label>
+          
+        <input id="food_and_personal__entertainment_box" name="query_food_and_personal__entertainment" value="<%= @current_budget_calculator.food_and_personal__entertainment %>">
+          
+      </div>
+                      
+      <div>
+        <label for="food_and_personal__medical_box">Food and personal  medical</label>
+          
+        <input id="food_and_personal__medical_box" name="query_food_and_personal__medical" value="<%= @current_budget_calculator.food_and_personal__medical %>">
+          
+      </div>
+                      
+      <div>
+        <label for="food_and_personal__pet_supplies_box">Food and personal  pet supplies</label>
+          
+        <input id="food_and_personal__pet_supplies_box" name="query_food_and_personal__pet_supplies" value="<%= @current_budget_calculator.food_and_personal__pet_supplies %>">
+          
+      </div>
+                      
+      <div>
+        <label for="food_and_personal__other_expenses_box">Food and personal  other expenses</label>
+          
+        <input id="food_and_personal__other_expenses_box" name="query_food_and_personal__other_expenses" value="<%= @current_budget_calculator.food_and_personal__other_expenses %>">
+          
+      </div>
+                      
+      <div>
+        <label for="monthly_savings__emergency_fund_box">Monthly savings  emergency fund</label>
+          
+        <input id="monthly_savings__emergency_fund_box" name="query_monthly_savings__emergency_fund" value="<%= @current_budget_calculator.monthly_savings__emergency_fund %>">
+          
+      </div>
+                      
+      <div>
+        <label for="monthly_savings__investments_box">Monthly savings  investments</label>
+          
+        <input id="monthly_savings__investments_box" name="query_monthly_savings__investments" value="<%= @current_budget_calculator.monthly_savings__investments %>">
+          
+      </div>
+                      
+      <div>
+        <label for="monthly_spend__budget_box">Monthly spend  budget</label>
+          
+        <input id="monthly_spend__budget_box" name="query_monthly_spend__budget" value="<%= @current_budget_calculator.monthly_spend__budget %>">
+          
+      </div>
+              
+      <div>
+        <label for="password_box">Password</label>
+        <input id="password_box" name="query_password" placeholder="Choose a new password..." type="password">
+      </div>
+    
+      <div>
+        <label for="password_confirmation_box">Password Confirmation</label>
+        <input id="password_confirmation_box" name="query_password_confirmation" placeholder="Confirm your new password..." type="password">
+      </div>
+
+      <button>
+        Update account
+      </button>
+    </form>
+  </div>
+</div>
