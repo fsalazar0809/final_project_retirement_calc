@@ -7,20 +7,18 @@ class BudgetCalculatorsController < ApplicationController
 
   def create
     @budget_calculator = BudgetCalculator.new
-    @budget_calculator.email = params.fetch("query_email")
-    @budget_calculator.password = params.fetch("query_password")
-    @budget_calculator.password_confirmation = params.fetch("query_password_confirmation")
+    @budget_calculator.user_id = session.fetch(:user_id)
+
+    
     @budget_calculator.monthly_income__salarywages = params.fetch("query_monthly_income__salarywages")
     @budget_calculator.monthly_income__other_income = params.fetch("query_monthly_income__other_income")
     @budget_calculator.housing_expenses__mortgage = params.fetch("query_housing_expenses__mortgage")
     @budget_calculator.housing_expenses__hoa_fees = params.fetch("query_housing_expenses__hoa_fees")
-    @budget_calculator.housing_expenses__rent = params.fetch("query_housing_expenses__rent")
     @budget_calculator.housing_expenses__home_insurance = params.fetch("query_housing_expenses__home_insurance")
     @budget_calculator.housing_expenses__repairs_maintenance = params.fetch("query_housing_expenses__repairs_maintenance")
     @budget_calculator.housing_expenses__water__gas__electricity = params.fetch("query_housing_expenses__water__gas__electricity")
     @budget_calculator.housing_expenses__cable__tv__internet = params.fetch("query_housing_expenses__cable__tv__internet")
     @budget_calculator.housing_expenses__phone_cell = params.fetch("query_housing_expenses__phone_cell")
-    @budget_calculator.user_id = params.fetch("query_user_id")
     @budget_calculator.transportation_expenses__car_payment = params.fetch("query_transportation_expenses__car_payment")
     @budget_calculator.transportation_expenses__car_insurance = params.fetch("query_transportation_expenses__car_insurance")
     @budget_calculator.transportation_expenses__gas__fuel = params.fetch("query_transportation_expenses__gas__fuel")
@@ -36,14 +34,13 @@ class BudgetCalculatorsController < ApplicationController
     @budget_calculator.food_and_personal__other_expenses = params.fetch("query_food_and_personal__other_expenses")
     @budget_calculator.monthly_savings__emergency_fund = params.fetch("query_monthly_savings__emergency_fund")
     @budget_calculator.monthly_savings__investments = params.fetch("query_monthly_savings__investments")
-    @budget_calculator.monthly_spend__budget = params.fetch("query_monthly_spend__budget")
 
     save_status = @budget_calculator.save
 
     if save_status == true
       session.store(:budget_calculator_id,  @budget_calculator.id)
    
-      redirect_to("/", { :notice => "Budget calculator account created successfully."})
+      redirect_to("/sample", { :notice => "Budget calculated successfully."})
     else
       redirect_to("/user_sign_up", { :alert => "Budget calculator account failed to create successfully."})
     end
@@ -101,5 +98,10 @@ class BudgetCalculatorsController < ApplicationController
     
     redirect_to("/", { :notice => "BudgetCalculator account cancelled" })
   end
+
+  def sample
+
+    render({ :template => "/budget_calculator_sessions/summary.html.erb"})
+  end 
   
 end
