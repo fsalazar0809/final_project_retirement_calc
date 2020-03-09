@@ -8,16 +8,43 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <% if session.fetch(:user_id).blank? %>
+
     <div class="collapse navbar-collapse" id="collapsible-nav-links">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Resources
+          <a href="/user_sign_up" class="dropdown-item">
+            Sign up
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          </div>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a href="/user_sign_in" class="dropdown-item" >
+            Sign in
+          </a>
         </li>
       </ul>
     </div> <!-- .navbar-collapse -->
   </div> <!-- .container -->
+
+  <% elsif %>
+
+    <div class="collapse navbar-collapse" id="collapsible-nav-links">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a href="/user_sign_out" class="dropdown-item">
+            Sign out
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a href="/edit_user_profile" class="dropdown-item">
+            Edit Profile
+          </a>
+        </li>
+      </ul>
+    </div> <!-- .navbar-collapse -->
+  </div> <!-- .container -->
+
+  <% end %>
 </nav>

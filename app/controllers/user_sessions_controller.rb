@@ -18,7 +18,7 @@ class UserSessionsController < ApplicationController
       else
         session.store(:user_id, user.id)
       
-        redirect_to("/", { :notice => "Signed in successfully." })
+        redirect_to("/homepage", { :notice => "Signed in successfully." })
       end
     else
       redirect_to("/user_sign_in", { :alert => "No user with that email address." })

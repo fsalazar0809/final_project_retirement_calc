@@ -45,7 +45,7 @@ class BudgetCalculatorsController < ApplicationController
    
       redirect_to("/", { :notice => "Budget calculator account created successfully."})
     else
-      redirect_to("/budget_calculator_sign_up", { :alert => "Budget calculator account failed to create successfully."})
+      redirect_to("/user_sign_up", { :alert => "Budget calculator account failed to create successfully."})
     end
   end
     

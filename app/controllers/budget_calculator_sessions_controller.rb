@@ -14,14 +14,14 @@ class BudgetCalculatorSessionsController < ApplicationController
       are_they_legit = budget_calculator.authenticate(the_supplied_password)
     
       if are_they_legit == false
-        redirect_to("/budget_calculator_sign_in", { :alert => "Incorrect password." })
+        redirect_to("/user_sign_in", { :alert => "Incorrect password." })
       else
         session.store(:budget_calculator_id, budget_calculator.id)
       
         redirect_to("/", { :notice => "Signed in successfully." })
       end
     else
-      redirect_to("/budget_calculator_sign_in", { :alert => "No budget_calculator with that email address." })
+      redirect_to("/user_sign_in", { :alert => "No budget_calculator with that email address." })
     end
   end
 

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new
+    @user = @current_user
     @user.email = params.fetch("query_email")
     @user.password = params.fetch("query_password")
     @user.password_confirmation = params.fetch("query_password_confirmation")
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if save_status == true
       session.store(:user_id,  @user.id)
    
-      redirect_to("/", { :notice => "User account created successfully."})
+      redirect_to("/homepage", { :notice => "User account created successfully."})
     else
       redirect_to("/user_sign_up", { :alert => "User account failed to create successfully."})
     end
@@ -48,4 +48,8 @@ class UsersController < ApplicationController
     redirect_to("/", { :notice => "User account cancelled" })
   end
   
+  def homepage
+    
+    render({ :template => "users/homepage.html.erb"})
+  end 
 end
