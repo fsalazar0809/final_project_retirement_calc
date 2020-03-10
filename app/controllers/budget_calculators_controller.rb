@@ -8,7 +8,6 @@ class BudgetCalculatorsController < ApplicationController
   def create
     @budget_calculator = BudgetCalculator.new
     @budget_calculator.user_id = session.fetch(:user_id)
-
     
     @budget_calculator.monthly_income__salarywages = params.fetch("query_monthly_income__salarywages")
     @budget_calculator.monthly_income__other_income = params.fetch("query_monthly_income__other_income")
@@ -33,7 +32,7 @@ class BudgetCalculatorsController < ApplicationController
     @budget_calculator.food_and_personal__pet_supplies = params.fetch("query_food_and_personal__pet_supplies")
     @budget_calculator.food_and_personal__other_expenses = params.fetch("query_food_and_personal__other_expenses")
     @budget_calculator.monthly_savings__emergency_fund = params.fetch("query_monthly_savings__emergency_fund")
-    @budget_calculator.monthly_savings__investments = params.fetch("query_monthly_savings__investments")
+    @budget_calculator.monthly_savings__investments = params.fetch("query_monthly_savings__investments")  
 
     save_status = @budget_calculator.save
 
@@ -42,9 +41,11 @@ class BudgetCalculatorsController < ApplicationController
    
       redirect_to("/sample", { :notice => "Budget calculated successfully."})
     else
-      redirect_to("/user_sign_up", { :alert => "Budget calculator account failed to create successfully."})
+      redirect_to("/sample", { :alert => "Budget calculator account failed to create successfully."})
     end
   end
+
+  
     
   def edit_registration_form
     render({ :template => "budget_calculators/edit_profile.html.erb" })
@@ -59,7 +60,6 @@ class BudgetCalculatorsController < ApplicationController
     @budget_calculator.monthly_income__other_income = params.fetch("query_monthly_income__other_income")
     @budget_calculator.housing_expenses__mortgage = params.fetch("query_housing_expenses__mortgage")
     @budget_calculator.housing_expenses__hoa_fees = params.fetch("query_housing_expenses__hoa_fees")
-    @budget_calculator.housing_expenses__rent = params.fetch("query_housing_expenses__rent")
     @budget_calculator.housing_expenses__home_insurance = params.fetch("query_housing_expenses__home_insurance")
     @budget_calculator.housing_expenses__repairs_maintenance = params.fetch("query_housing_expenses__repairs_maintenance")
     @budget_calculator.housing_expenses__water__gas__electricity = params.fetch("query_housing_expenses__water__gas__electricity")

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_143423) do
+ActiveRecord::Schema.define(version: 2020_03_10_004223) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -39,13 +39,10 @@ ActiveRecord::Schema.define(version: 2020_03_09_143423) do
   end
 
   create_table "budget_calculators", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
     t.integer "monthly_income__salarywages"
     t.integer "monthly_income__other_income"
     t.integer "housing_expenses__mortgage"
     t.integer "housing_expenses__hoa_fees"
-    t.integer "housing_expenses__rent"
     t.integer "housing_expenses__home_insurance"
     t.integer "housing_expenses__repairs_maintenance"
     t.integer "housing_expenses__water__gas__electricity"
@@ -67,7 +64,6 @@ ActiveRecord::Schema.define(version: 2020_03_09_143423) do
     t.integer "food_and_personal__other_expenses"
     t.integer "monthly_savings__emergency_fund"
     t.integer "monthly_savings__investments"
-    t.integer "monthly_spend__budget"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
