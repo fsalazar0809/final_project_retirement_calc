@@ -1,2 +1,5 @@
-<h1> Summary </h1>
-<h3> <%= @monthly_budget %> </h3>
+<h1> Summary of Expected Spending in Retirement </h1>
+
+<h6> Monthly Spend: <%= number_to_currency(@monthly_budget) %> </h6>
+
+<h6> Annual Spend: <%= number_to_currency(@annual_budget)%> </h6>

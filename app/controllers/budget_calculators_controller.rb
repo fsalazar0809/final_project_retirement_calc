@@ -1,8 +1,8 @@
 class BudgetCalculatorsController < ApplicationController
   # skip_before_action(:force_budget_calculator_sign_in, { :only => [:new_registration_form, :create] })
   
-  def new_registration_form
-    render({ :template => "budget_calculator_sessions/sign_up.html.erb" })
+  def budget_information
+    render({ :template => "budget_calculator_sessions/budget_overview.html.erb" })
   end
 
   def create
@@ -99,11 +99,16 @@ class BudgetCalculatorsController < ApplicationController
     redirect_to("/", { :notice => "BudgetCalculator account cancelled" })
   end
 
-  def sample
+  def summary
     @budget = BudgetCalculator.where({ :id => params.fetch(:budget_id)}).at(0)
 
-    @monthly_budget = @budget.inspect
-    @monthly_budget = @budget.educational_expenses__college_tuition.to_i + @budget.educational_expenses__school_supplies.to_i
+    @monthly_budgets = @budget.inspect
+    monthly_budget_1 = @budget.educational_expenses__college_tuition.to_i + @budget.educational_expenses__school_supplies.to_i + @budget.monthly_income__salarywages.to_i + @budget.monthly_income__other_income.to_i + @budget.housing_expenses__mortgage.to_i + @budget.housing_expenses__hoa_fees.to_i + @budget.housing_expenses__home_insurance.to_i + @budget.housing_expenses__repairs_maintenance.to_i 
+    monthly_budget_2 = @budget.housing_expenses__water__gas__electricity.to_i + @budget.housing_expenses__cable__tv__internet.to_i + @budget.housing_expenses__phone_cell.to_i + @budget.transportation_expenses__car_payment.to_i + @budget.transportation_expenses__car_insurance.to_i + @budget.transportation_expenses__gas__fuel.to_i + @budget.transportation_expenses__car_repairs.to_i + @budget.educational_expenses__school_supplies.to_i 
+    monthly_budget_3 = @budget.educational_expenses__student_loans.to_i + @budget.educational_expenses__college_tuition.to_i + @budget.food_and_personal__groceries__household.to_i + @budget.food_and_personal__clothing.to_i + @budget.food_and_personal__entertainment.to_i +  @budget.food_and_personal__medical.to_i + @budget.food_and_personal__pet_supplies.to_i + @budget.food_and_personal__other_expenses.to_i
+    monthly_budget_4 = @budget.monthly_savings__emergency_fund.to_i + @budget.monthly_savings__investments.to_i
+    @monthly_budget = monthly_budget_1.to_f + monthly_budget_2.to_f + monthly_budget_3.to_f + monthly_budget_4.to_f
+    @annual_budget = @monthly_budget.to_f * 12
 
 
     render({ :template => "/budget_calculator_sessions/summary.html.erb"})
