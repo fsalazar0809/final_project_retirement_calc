@@ -39,7 +39,7 @@ class BudgetCalculatorsController < ApplicationController
     if save_status == true
       session.store(:budget_calculator_id,  @budget_calculator.id)
    
-      redirect_to("/sample/" + @budget_calculator.id.to_s, { :notice => "Budget calculated successfully."})
+      redirect_to("/summary/" + @budget_calculator.id.to_s, { :notice => "Budget calculated successfully."})
     else
       redirect_to("/budget_sign_up", { :alert => "Budget calculator account failed to create successfully."})
     end
@@ -103,6 +103,8 @@ class BudgetCalculatorsController < ApplicationController
     @budget = BudgetCalculator.where({ :id => params.fetch(:budget_id)}).at(0)
 
     @monthly_budget = @budget.inspect
+    @monthly_budget = @budget.educational_expenses__college_tuition.to_i + @budget.educational_expenses__school_supplies.to_i
+
 
     render({ :template => "/budget_calculator_sessions/summary.html.erb"})
   end 
