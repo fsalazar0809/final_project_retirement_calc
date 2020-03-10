@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     get("/personal_information_sign_up", { :controller => "personal_informations", :action => "new_registration_form" })   
     get("/budget_sign_up", { :controller => "budget_calculators", :action => "new_registration_form" }) 
 
-    get("/sample", { :controller => "budget_calculators", :action => "sample" }) 
+    get("/sample/:budget_id", { :controller => "budget_calculators", :action => "sample" }) 
     post("/insert_budget_calculator", { :controller => "budget_calculators", :action => "create"  })
 
 
