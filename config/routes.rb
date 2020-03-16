@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   #HOMEPAGE
 
-   get("/", { :controller => "users", :action => "new_registration_form" })      
+   get("/", { :controller => "user_sessions", :action => "new_session_form" })      
 
 
   # SIGN UP FORM
