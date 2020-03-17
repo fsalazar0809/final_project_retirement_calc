@@ -40,10 +40,14 @@ Rails.application.routes.draw do
 
   #NEW PERSONAL INFORMATION
 
-    get("/personal_information_sign_up", { :controller => "personal_informations", :action => "new_registration_form" })   
+    get("/personal_information_sign_up/:budget_id", { :controller => "personal_informations", :action => "new_registration_form" })  
+     
     get("/budget_sign_up", { :controller => "budget_calculators", :action => "budget_information" }) 
 
     get("/summary/:budget_id", { :controller => "budget_calculators", :action => "summary" }) 
+
+    post("/insert_personal_information", { :controller => "personal_informations", :action => "create"  })
+
     post("/insert_budget_calculator", { :controller => "budget_calculators", :action => "create"  })
 
 
