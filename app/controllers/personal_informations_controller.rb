@@ -7,24 +7,19 @@ class PersonalInformationsController < ApplicationController
 
   def create
     @personal_information = PersonalInformation.new
-    @personal_information.email = params.fetch("query_email")
-    @personal_information.password = params.fetch("query_password")
-    @personal_information.password_confirmation = params.fetch("query_password_confirmation")
     @personal_information.current_age = params.fetch("query_current_age")
     @personal_information.retirement_age = params.fetch("query_retirement_age")
-    @personal_information.retirement_savings = params.fetch("query_retirement_savings")
     @personal_information.return_on_savings = params.fetch("query_return_on_savings")
     @personal_information.life_expectancy = params.fetch("query_life_expectancy")
-    @personal_information.monthly_contribution = params.fetch("query_monthly_contribution")
-    @personal_information.user_id = params.fetch("query_user_id")
-    @personal_information.budget_id = params.fetch("query_budget_id")
+    @personal_information.monthly_retirement_savings = params.fetch("query_monthly_retirement_savings")
+    @personal_information.inflation_rate = params.fetch("query_inflation_rate")
 
     save_status = @personal_information.save
 
     if save_status == true
       session.store(:personal_information_id,  @personal_information.id)
    
-      redirect_to("/", { :notice => "Personal information account created successfully."})
+      redirect_to("/summary_step_2/" + @personal_information.id.to_s, { :notice => "Personal information saved successfully."})
     else
       redirect_to("/personal_information_sign_up", { :alert => "Personal information account failed to create successfully."})
     end
@@ -36,9 +31,6 @@ class PersonalInformationsController < ApplicationController
 
   def update
     @personal_information = @current_personal_information
-    @personal_information.email = params.fetch("query_email")
-    @personal_information.password = params.fetch("query_password")
-    @personal_information.password_confirmation = params.fetch("query_password_confirmation")
     @personal_information.current_age = params.fetch("query_current_age")
     @personal_information.retirement_age = params.fetch("query_retirement_age")
     @personal_information.retirement_savings = params.fetch("query_retirement_savings")
@@ -56,6 +48,17 @@ class PersonalInformationsController < ApplicationController
       render({ :template => "personal_informations/edit_profile_with_errors.html.erb" })
     end
   end
+
+  def summary_step_2
+    @personal_information_demographic = PersonalInformation.where({ :id => params.fetch(:id)}).at(0)
+
+    @information_demo = @personal_information_demographic.inspect
+    @retirement_age = @personal_information_demographic.retirement_age.to_i
+    @current_age = @personal_information_demographic.current_age.to_i
+    @number_of_years_to_save = @personal_information_demographic.retirement_age.to_i - @personal_information_demographic.current_age.to_i
+   
+    render({ :template => "/budget_calculator_sessions/summary_2.html.erb"})
+  end 
 
   def destroy
     @current_personal_information.destroy
