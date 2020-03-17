@@ -55,7 +55,16 @@ class PersonalInformationsController < ApplicationController
     @information_demo = @personal_information_demographic.inspect
     @retirement_age = @personal_information_demographic.retirement_age.to_i
     @current_age = @personal_information_demographic.current_age.to_i
+    @life_expectancy =  @personal_information_demographic.life_expectancy.to_i
     @number_of_years_to_save = @personal_information_demographic.retirement_age.to_i - @personal_information_demographic.current_age.to_i
+
+    @monthly_retirement_savings = @personal_information_demographic.monthly_retirement_savings.to_i
+    @annual_retirement_savings = @monthly_retirement_savings * 12
+
+    @expected_growth_rate = @personal_information_demographic.return_on_savings.to_f - @personal_information_demographic.inflation_rate.to_f
+    
+   
+
    
     render({ :template => "/budget_calculator_sessions/summary_2.html.erb"})
   end 

@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
 
-      redirect_to("/", { :notice => "User account updated successfully."})
+      redirect_to("/homepage", { :notice => "User account updated successfully."})
     else
       render({ :template => "users/edit_profile_with_errors.html.erb" })
     end
