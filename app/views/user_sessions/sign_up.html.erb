@@ -1,3 +1,5 @@
+ <% if session.fetch(:user_id).blank? %>
+
 <h1>Sign up</h1>
 
 <form action="/insert_user" method="post">
@@ -27,3 +29,10 @@
 <p>
   Or, <a href="/user_sign_in">Sign in</a> instead.
 </p>
+
+
+ <% elsif %>
+
+  <h1> You're already signed up! <h1>
+
+  <% end %>
