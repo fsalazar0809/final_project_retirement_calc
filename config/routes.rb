@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   ###OVERVIEW TEST
-  get("/summaryhome", { :controller => "application", :action => "index" })
+  #get("/summaryhome/:user_id", { :controller => "application", :action => "index" })
 
   #PAGE AFTER SIGN IN and SIGN UP 
   get("/homepage", { :controller => "users", :action => "homepage" })

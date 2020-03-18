@@ -2,10 +2,10 @@ class ApplicationController < ActionController::Base
   before_action(:load_current_budget_calculator)
   
   def index
-    @user_id_url = session.fetch(:user_id)
-    @budgets = BudgetCalculator.where({ :user_id => :user_id_url }).at(0)
+    the_id = params.fetch("user_id")
+    @budgets = BudgetCalculator.where({:user_id => the_id }).at(0)
 
-    render({ :template => "/budget_calculators/index.html.erb" })
+    render({ :template => "/budget_calculators/summary.html.erb" })
   end
   # before_action(:force_budget_calculator_sign_in)
   

@@ -1,6 +1,14 @@
 class BudgetCalculatorsController < ApplicationController
   # skip_before_action(:force_budget_calculator_sign_in, { :only => [:new_registration_form, :create] })
   
+  #def index
+  #  the_id = params.fetch("user_id")
+  #  @budgets = BudgetCalculator.where({:user_id => the_id }).at(0)
+
+  #  render({ :template => "/budget_calculators/summary.html.erb" })
+ # end
+ 
+  
   def budget_information
     render({ :template => "budget_calculator_sessions/budget_overview.html.erb" })
   end
@@ -93,6 +101,9 @@ class BudgetCalculatorsController < ApplicationController
   end
 
   def summary_step_1
+    the_id = params.fetch("user_id")
+    @budgets = BudgetCalculator.where({:user_id => the_id }).at(0)
+
     @budget = BudgetCalculator.where({ :id => params.fetch(:budget_id)}).at(0)
 
     @monthly_budgets = @budget.inspect
