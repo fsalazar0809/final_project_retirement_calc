@@ -54,11 +54,17 @@ class BudgetCalculatorsController < ApplicationController
   
     
   def edit_registration_form
+    the_budget_id = params.fetch("budget_id")
+
+    @budget = BudgetCalculator.where({ :id => the_budget_id}).at(0)
+
     render({ :template => "budget_calculators/edit_profile.html.erb" })
   end
 
   def update
-    @budget_calculator = @current_budget_calculator
+    the_budget_id = params.fetch("budget_id")
+
+    @budget_calculator = BudgetCalculator.where({ :id => the_budget_id}).at(0)
 
     @budget_calculator.housing_expenses__mortgage = params.fetch("query_housing_expenses__mortgage")
     @budget_calculator.housing_expenses__hoa_fees = params.fetch("query_housing_expenses__hoa_fees")
@@ -81,29 +87,28 @@ class BudgetCalculatorsController < ApplicationController
     @budget_calculator.food_and_personal__pet_supplies = params.fetch("query_food_and_personal__pet_supplies")
     @budget_calculator.food_and_personal__other_expenses = params.fetch("query_food_and_personal__other_expenses")
     @budget_calculator.monthly_savings__emergency_fund = params.fetch("query_monthly_savings__emergency_fund")
-    @budget_calculator.monthly_savings__investments = params.fetch("query_monthly_savings__investments")  
+    @budget_calculator.monthly_savings__investments = params.fetch("query_monthly_savings__investments")    
 
     
     if @budget_calculator.valid?
       @budget_calculator.save
 
-      redirect_to("/summary_step_1/" + @budget_calculator.id.to_s, { :notice => "Budget modified successfully."})
+      redirect_to("/summary_step_1/" + @budget_calculator.user_id.to_s + "/"+ @budget_calculator.id.to_s, { :notice => "Budget modified successfully."})
     else
       render({ :template => "budget_calculators/edit_profile_with_errors.html.erb" })
     end
   end
 
   def destroy
+
     @current_budget_calculator.destroy
     reset_session
     
-    redirect_to("/summary_step_1/" + @budget_calculator.user_id.to_s, { :notice => "Budget deleted successfully" })
+    redirect_to("/homepage", { :notice => "Budget deleted successfully" })
   end
 
   def summary_step_1
     the_id = params.fetch("user_id")
-    @budgets = BudgetCalculator.where({:user_id => the_id }).at(0)
-
     @budget = BudgetCalculator.where({ :id => params.fetch(:budget_id)}).at(0)
 
     @monthly_budgets = @budget.inspect

@@ -29,6 +29,11 @@ Rails.application.routes.draw do
   #DELETE BUDGET RECORD
   get("/delete_budgetcalculator_account", { :controller => "budget_calculators", :action => "destroy" })
 
+  #UPDATE BUDGET RECORD
+  get("/edit_budget/:user_id/:budget_id", { :controller => "budget_calculators", :action => "edit_registration_form" })
+    # AUTHENTICATE AND STORE COOKIE
+  post("/modify_budget/:user_id/:budget_id", { :controller => "budget_calculators", :action => "update" })
+
   # ------------------------------
 
   # SIGN IN FORM
