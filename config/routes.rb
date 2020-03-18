@@ -55,7 +55,7 @@ Rails.application.routes.draw do
      
     get("/budget_sign_up", { :controller => "budget_calculators", :action => "budget_information" }) 
 
-    get("/summary_step_1/:user_id/:budget_id", { :controller => "budget_calculators", :action => "summary_step_1" }) 
+    get("/summary_step_1/:budget_id", { :controller => "budget_calculators", :action => "summary_step_1" }) 
 
     post("/insert_personal_information", { :controller => "personal_informations", :action => "create"  })
 
