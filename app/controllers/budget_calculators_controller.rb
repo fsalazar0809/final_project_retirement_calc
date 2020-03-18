@@ -37,7 +37,7 @@ class BudgetCalculatorsController < ApplicationController
     if save_status == true
       session.store(:budget_calculator_id,  @budget_calculator.id)
    
-      redirect_to("/summary_step_1/" + @budget_calculator.id.to_s, { :notice => "Expenses calculated successfully."})
+      redirect_to("/summary_step_1/" + @budget_calculator.user_id.to_s + "/"+ @budget_calculator.id.to_s, { :notice => "Expenses calculated successfully."})
     else
       redirect_to("/budget_sign_up", { :alert => "Budget calculator account failed to create successfully."})
     end
@@ -51,11 +51,7 @@ class BudgetCalculatorsController < ApplicationController
 
   def update
     @budget_calculator = @current_budget_calculator
-    @budget_calculator.email = params.fetch("query_email")
-    @budget_calculator.password = params.fetch("query_password")
-    @budget_calculator.password_confirmation = params.fetch("query_password_confirmation")
-    @budget_calculator.monthly_income__salarywages = params.fetch("query_monthly_income__salarywages")
-    @budget_calculator.monthly_income__other_income = params.fetch("query_monthly_income__other_income")
+
     @budget_calculator.housing_expenses__mortgage = params.fetch("query_housing_expenses__mortgage")
     @budget_calculator.housing_expenses__hoa_fees = params.fetch("query_housing_expenses__hoa_fees")
     @budget_calculator.housing_expenses__home_insurance = params.fetch("query_housing_expenses__home_insurance")
@@ -63,7 +59,6 @@ class BudgetCalculatorsController < ApplicationController
     @budget_calculator.housing_expenses__water__gas__electricity = params.fetch("query_housing_expenses__water__gas__electricity")
     @budget_calculator.housing_expenses__cable__tv__internet = params.fetch("query_housing_expenses__cable__tv__internet")
     @budget_calculator.housing_expenses__phone_cell = params.fetch("query_housing_expenses__phone_cell")
-    @budget_calculator.user_id = params.fetch("query_user_id")
     @budget_calculator.transportation_expenses__car_payment = params.fetch("query_transportation_expenses__car_payment")
     @budget_calculator.transportation_expenses__car_insurance = params.fetch("query_transportation_expenses__car_insurance")
     @budget_calculator.transportation_expenses__gas__fuel = params.fetch("query_transportation_expenses__gas__fuel")
@@ -78,13 +73,13 @@ class BudgetCalculatorsController < ApplicationController
     @budget_calculator.food_and_personal__pet_supplies = params.fetch("query_food_and_personal__pet_supplies")
     @budget_calculator.food_and_personal__other_expenses = params.fetch("query_food_and_personal__other_expenses")
     @budget_calculator.monthly_savings__emergency_fund = params.fetch("query_monthly_savings__emergency_fund")
-    @budget_calculator.monthly_savings__investments = params.fetch("query_monthly_savings__investments")
-    @budget_calculator.monthly_spend__budget = params.fetch("query_monthly_spend__budget")
+    @budget_calculator.monthly_savings__investments = params.fetch("query_monthly_savings__investments")  
+
     
     if @budget_calculator.valid?
       @budget_calculator.save
 
-      redirect_to("/", { :notice => "Budget calculator account updated successfully."})
+      redirect_to("/summary_step_1/" + @budget_calculator.id.to_s, { :notice => "Budget modified successfully."})
     else
       render({ :template => "budget_calculators/edit_profile_with_errors.html.erb" })
     end
@@ -94,13 +89,14 @@ class BudgetCalculatorsController < ApplicationController
     @current_budget_calculator.destroy
     reset_session
     
-    redirect_to("/", { :notice => "BudgetCalculator account cancelled" })
+    redirect_to("/summary_step_1/" + @budget_calculator.user_id.to_s, { :notice => "Budget deleted successfully" })
   end
 
   def summary_step_1
     @budget = BudgetCalculator.where({ :id => params.fetch(:budget_id)}).at(0)
 
     @monthly_budgets = @budget.inspect
+
     @housing_expenses_budget_1 = @budget.housing_expenses__mortgage.to_i + @budget.housing_expenses__hoa_fees.to_i + @budget.housing_expenses__home_insurance.to_i + @budget.housing_expenses__repairs_maintenance.to_i+@budget.housing_expenses__water__gas__electricity.to_i + @budget.housing_expenses__cable__tv__internet.to_i + @budget.housing_expenses__phone_cell.to_i + 
  
     @transportation_expenses_budget_2= @budget.transportation_expenses__car_payment.to_i + @budget.transportation_expenses__car_insurance.to_i + @budget.transportation_expenses__gas__fuel.to_i + @budget.transportation_expenses__car_repairs.to_i 

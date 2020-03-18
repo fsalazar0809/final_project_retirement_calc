@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  ###OVERVIEW TEST
+  get("/summaryhome", { :controller => "application", :action => "index" })
 
   #PAGE AFTER SIGN IN and SIGN UP 
   get("/homepage", { :controller => "users", :action => "homepage" })
@@ -25,6 +26,9 @@ Rails.application.routes.draw do
   # DELETE RECORD
   get("/cancel_user_account", { :controller => "users", :action => "destroy" })
 
+  #DELETE BUDGET RECORD
+  get("/delete_budgetcalculator_account", { :controller => "budget_calculators", :action => "destroy" })
+
   # ------------------------------
 
   # SIGN IN FORM
@@ -46,7 +50,7 @@ Rails.application.routes.draw do
      
     get("/budget_sign_up", { :controller => "budget_calculators", :action => "budget_information" }) 
 
-    get("/summary_step_1/:budget_id", { :controller => "budget_calculators", :action => "summary_step_1" }) 
+    get("/summary_step_1/:user_id/:budget_id", { :controller => "budget_calculators", :action => "summary_step_1" }) 
 
     post("/insert_personal_information", { :controller => "personal_informations", :action => "create"  })
 
