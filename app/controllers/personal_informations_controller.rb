@@ -2,13 +2,16 @@ class PersonalInformationsController < ApplicationController
   # skip_before_action(:force_personal_information_sign_in, { :only => [:new_registration_form, :create] })
   
   
-  
   def new_registration_form
     render({ :template => "personal_information_sessions/sign_up.html.erb" })
   end
 
   def create
     @personal_information = PersonalInformation.new
+    @personal_information.user_id = @current_user.id
+    @personal_information.budget_id = @current_budget_calculator.id
+  
+
     @personal_information.current_age = params.fetch("query_current_age")
     @personal_information.retirement_age = params.fetch("query_retirement_age")
     @personal_information.return_on_savings = params.fetch("query_return_on_savings")

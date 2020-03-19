@@ -16,5 +16,14 @@
 #
 
 class PersonalInformation < ApplicationRecord
+  validates :current_age, presence: true
+  validates :inflation_rate, presence: true
+  validates :life_expectancy, presence: true
+  validates :monthly_retirement_savings, presence: true
+  validates :retirement_age, presence: true
+  validates :return_on_savings, presence: true
+
+  belongs_to :user
+  belongs_to :budget, :class_name => "BudgetCalculator"
   
 end

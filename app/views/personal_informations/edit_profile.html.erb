@@ -6,25 +6,33 @@
   <div>
     <form action="/modify_personal_information" method="post">
       <div>
-        <label for="current_age_box">Current age</label>
+        <label for="current_age_box">Current age (in years)</label>
         <input id="current_age_box" name="query_current_age" value="<%= @current_personal_information.current_age %>">
       </div>
       <div>
-        <label for="retirement_age_box">Retirement age</label>
+        <label for="retirement_age_box">Retirement age (in years)</label>
         <input id="retirement_age_box" name="query_retirement_age" value="<%= @current_personal_information.retirement_age %>">
       </div>
       <div>
-        <label for="return_on_savings_box">Return on savings</label>
-        <input id="return_on_savings_box" name="query_return_on_savings" value="<%= @current_personal_information.return_on_savings %>">
-      </div>
-      <div>
-        <label for="life_expectancy_box">Life expectancy</label>
+        <label for="life_expectancy_box">Life expectancy (in years)</label>
         <input id="life_expectancy_box" name="query_life_expectancy" value="<%= @current_personal_information.life_expectancy %>">
       </div>
+
       <div>
-        <label for="monthly_contribution_box">Monthly contribution</label>
-        <input id="monthly_contribution_box" name="query_monthly_contribution" value="<%= @current_personal_information.monthly_retirement_savings %>">
+        <label for="monthly_contribution_box">Monthly Retirement Savings (How much do you save on a monthly basis?)</label>
+        <input id="monthly_contribution_box" name="query_monthly_retirement_savings" value="<%= @current_personal_information.monthly_retirement_savings %>">
       </div>
+
+      <div>
+        <label for="return_on_savings_box">Return on Savings (Please enter in percentage form - e.g. 1 for 1%)</label>
+        <input id="return_on_savings_box" name="query_return_on_savings" value="<%= @current_personal_information.return_on_savings %>">
+      </div>
+
+      <div>
+        <label for="return_on_inflation_rate">Inflation Rate (Please enter in percentage form - e.g. 1 for 1%)</label>
+        <input id="return_on_inflation_rate" name="query_inflation_rate" value="<%= @current_personal_information.inflation_rate %>">
+      </div>
+
 
       <button>
         Update account

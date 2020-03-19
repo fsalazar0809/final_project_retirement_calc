@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   ###OVERVIEW TEST
+  get("/testing/:id", { :controller => "application", :action => "testing" })
+
   #get("/summaryhome/:user_id", { :controller => "application", :action => "index" })
 
   #PAGE AFTER SIGN IN and SIGN UP 

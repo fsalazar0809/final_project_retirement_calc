@@ -1,5 +1,9 @@
 <h1> Summary of Expected Spending in Retirement </h1>
 
+<h5> Personal Information ID: <%= @current_personal_information.id %> </h5>
+<h5> Budget ID: <%= @current_personal_information.budget_id %> </h5>
+<h5> User ID: <%= @current_personal_information.user_id %> </h5>
+
 <h5> <%= @information_demo %> </h5>
 
 <h5> You are <%= @current_age %> years old, expect to retire at the age of <%= @retirement_age %> and expect to live until the age of <%= @life_expectancy%>. 
@@ -17,4 +21,10 @@
   <button >
     Edit Personal Information
   </button>
+</form>
+
+<form action="/edit_budget" >
+<button >
+ Edit Budget
+</button>
 </form>
