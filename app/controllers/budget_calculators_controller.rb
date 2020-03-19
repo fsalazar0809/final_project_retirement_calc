@@ -54,17 +54,13 @@ class BudgetCalculatorsController < ApplicationController
   
     
   def edit_registration_form
-    the_budget_id = params.fetch("budget_id")
-
-    @budget = BudgetCalculator.where({ :id => the_budget_id}).at(0)
+    @budget_calculator = BudgetCalculator.where({ :id => @current_budget_calculator.id}).at(0)
 
     render({ :template => "budget_calculators/edit_profile.html.erb" })
   end
 
   def update
-    the_budget_id = params.fetch("budget_id")
-
-    @budget_calculator = BudgetCalculator.where({ :id => the_budget_id}).at(0)
+    @budget_calculator = BudgetCalculator.where({ :id => @current_budget_calculator.id}).at(0)
 
     @budget_calculator.housing_expenses__mortgage = params.fetch("query_housing_expenses__mortgage")
     @budget_calculator.housing_expenses__hoa_fees = params.fetch("query_housing_expenses__hoa_fees")

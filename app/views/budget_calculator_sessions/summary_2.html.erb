@@ -5,10 +5,11 @@
 <h5> You are <%= @current_age %> years old, expect to retire at the age of <%= @retirement_age %> and expect to live until the age of <%= @life_expectancy%>. 
 <h5> You have <%= @number_of_years_to_save %> years to save for retirement. </h5>
 
-<h5> HE <%= @annual_retirement_savings %> </h5>
+<h5> You are saving <%= number_to_currency (@annual_retirement_savings) %> per year. </h5>
 
-<h5> HE <%= @expected_growth_rate %> </h5>
+<h5> You expect a return on investment, including inflation, of  <%= number_to_percentage(@expected_growth_rate) %>. </h5>
 
+<h5> If you continue saving <%= number_to_currency (@annual_retirement_savings) %> annually, you will have [$$$] by the time you retire. </h5>
 
-
+<h5> In retirement you expect to spend <%= number_to_currency (@annual_budget)%> on an annual basis. Your savings will last approximately [XYZ years].</h5>
 
