@@ -8,8 +8,6 @@ class PersonalInformationSessionsController < ApplicationController
 
 
 
-
-
   def create_cookie
     personal_information = PersonalInformation.where({ :email => params.fetch("query_email") }).at(0)
     

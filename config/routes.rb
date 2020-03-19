@@ -51,6 +51,10 @@ Rails.application.routes.draw do
   #NEW PERSONAL INFORMATION
 
     get("/personal_information_sign_up", { :controller => "personal_informations", :action => "new_registration_form" })
+
+    get("/edit_personal_information", { :controller => "personal_informations", :action => "edit_registration_form" })
+
+    post("/modify_personal_information", { :controller => "personal_informations", :action => "update" })
     
     get("/summary_step_2/:id", { :controller => "personal_informations", :action => "summary_step_2" })
      
