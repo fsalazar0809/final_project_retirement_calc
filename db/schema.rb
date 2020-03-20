@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_004223) do
+ActiveRecord::Schema.define(version: 2020_03_17_140430) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -69,18 +69,16 @@ ActiveRecord::Schema.define(version: 2020_03_10_004223) do
   end
 
   create_table "personal_informations", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
     t.integer "current_age"
     t.integer "retirement_age"
-    t.float "retirement_savings"
     t.float "return_on_savings"
     t.integer "life_expectancy"
-    t.integer "monthly_contribution"
     t.integer "user_id"
     t.integer "budget_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "inflation_rate"
+    t.integer "monthly_retirement_savings"
   end
 
   create_table "users", force: :cascade do |t|

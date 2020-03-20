@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  ###OVERVIEW TEST
+  get("/testing/:id", { :controller => "application", :action => "testing" })
 
+  #get("/summaryhome/:user_id", { :controller => "application", :action => "index" })
 
   #PAGE AFTER SIGN IN and SIGN UP 
   get("/homepage", { :controller => "users", :action => "homepage" })
@@ -8,7 +11,7 @@ Rails.application.routes.draw do
 
   #HOMEPAGE
 
-   get("/", { :controller => "users", :action => "new_registration_form" })      
+   get("/", { :controller => "user_sessions", :action => "new_session_form" })      
 
 
   # SIGN UP FORM
@@ -25,6 +28,15 @@ Rails.application.routes.draw do
   # DELETE RECORD
   get("/cancel_user_account", { :controller => "users", :action => "destroy" })
 
+  #DELETE BUDGET RECORD
+  get("/delete_budgetcalculator_account", { :controller => "budget_calculators", :action => "destroy" })
+
+  #UPDATE BUDGET RECORD
+  get("/edit_budget", { :controller => "budget_calculators", :action => "edit_registration_form" })
+    
+  # AUTHENTICATE AND STORE COOKIE
+  post("/modify_budget", { :controller => "budget_calculators", :action => "update" })
+
   # ------------------------------
 
   # SIGN IN FORM
@@ -40,10 +52,20 @@ Rails.application.routes.draw do
 
   #NEW PERSONAL INFORMATION
 
-    get("/personal_information_sign_up", { :controller => "personal_informations", :action => "new_registration_form" })   
-    get("/budget_sign_up", { :controller => "budget_calculators", :action => "new_registration_form" }) 
+    get("/personal_information_sign_up", { :controller => "personal_informations", :action => "new_registration_form" })
 
-    get("/sample/:budget_id", { :controller => "budget_calculators", :action => "sample" }) 
+    get("/edit_personal_information", { :controller => "personal_informations", :action => "edit_registration_form" })
+
+    post("/modify_personal_information", { :controller => "personal_informations", :action => "update" })
+    
+    get("/summary_step_2/:id", { :controller => "personal_informations", :action => "summary_step_2" })
+     
+    get("/budget_sign_up", { :controller => "budget_calculators", :action => "budget_information" }) 
+
+    get("/summary_step_1/:budget_id", { :controller => "budget_calculators", :action => "summary_step_1" }) 
+
+    post("/insert_personal_information", { :controller => "personal_informations", :action => "create"  })
+
     post("/insert_budget_calculator", { :controller => "budget_calculators", :action => "create"  })
 
 

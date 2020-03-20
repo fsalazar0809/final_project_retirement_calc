@@ -1,8 +1,11 @@
-# == Schema Information
-#
-# Table name: budget_calculators
-#
-#  id                                        :integer          not null, primary key
+
+
+ <h1> <%= @budgets.id %> <h1>
+  <h1> <%= @budgets.user_id%> <h1>
+  <h1> <%= @budgets.educational_expenses__college_tuition %> <h1>
+  <h1> <%= @budgets.educational_expenses__school_supplies %> <h1>
+
+
 #  educational_expenses__college_tuition     :string
 #  educational_expenses__school_supplies     :integer
 #  educational_expenses__student_loans       :integer
@@ -30,12 +33,10 @@
 #  created_at                                :datetime         not null
 #  updated_at                                :datetime         not null
 #  user_id                                   :string
-#
-
-class BudgetCalculator < ApplicationRecord
-  has_one :personal_information, :foreign_key => "budget_id", :dependent => :destroy
 
 
+ 
 
-end
 
+ 
+ 

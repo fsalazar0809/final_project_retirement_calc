@@ -1,0 +1,31 @@
+<h1> How long will your retirement savings last? </h1>
+
+<h5> Personal Information ID: <%= @current_personal_information.id %> </h5>
+<h5> Budget ID: <%= @current_personal_information.budget_id %> </h5>
+<h5> User ID: <%= @current_personal_information.user_id %> </h5>
+
+<h5> You are <%= @current_age %> years old, expect to retire at the age of <%= @retirement_age %> and expect to live until the age of <%= @life_expectancy%>. 
+<h5> You have <%= @number_of_years_to_save %> years to save for retirement. </h5>
+
+<h5> You are saving <%= number_to_currency (@annual_retirement_savings) %> per year. </h5>
+
+<h5> You expect a return on investment, including inflation, of  <%= number_to_percentage(@expected_growth_rate) %>. </h5>
+
+<h5> If you continue saving <%= number_to_currency(@annual_retirement_savings) %> annually, you will have <%= number_to_currency(@value_of_savings_at_retirement) %>  by the time you retire. </h5>
+
+<h5> In retirement you expect to spend <%= number_to_currency(@annual_budget)%> on an annual basis. Your savings will last approximately <%= @number_of_years_covered_for_retirement.round(0) %> years. Based on your estimated life expectancy, you expect to live <%= @number_of_years_in_retirement%> years.</h5>
+
+
+
+
+<form action="/edit_personal_information" >
+  <button >
+    Edit Personal Information
+  </button>
+</form>
+
+<form action="/edit_budget" >
+<button >
+ Edit Budget
+</button>
+</form>

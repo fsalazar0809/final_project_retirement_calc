@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
   before_action(:load_current_budget_calculator)
   
+  def index
+    the_id = params.fetch("user_id")
+    @budgets = BudgetCalculator.where({:user_id => the_id }).at(0)
+
+    render({ :template => "/budget_calculators/summary.html.erb" })
+  end
   # before_action(:force_budget_calculator_sign_in)
   
   def load_current_budget_calculator
@@ -43,5 +49,14 @@ class ApplicationController < ActionController::Base
       redirect_to("/user_sign_in", { :notice => "You have to sign in first." })
     end
   end
+
+  def testing
+    personal_information = PersonalInformation.where({:id => params.fetch(:id)}).at(0)
+    @expenses = BudgetCalculator.where({ :id => personal_information.budget_id}).at(0)
+
+    #create a blank view, render on front end, on render page call 54 & 55 --> instance variables @expenses.inspect#
+  
+    render({ :template => "/budget_calculator_sessions/summary_2.html.erb"})
+  end 
 
 end

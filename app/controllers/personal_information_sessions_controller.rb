@@ -5,6 +5,9 @@ class PersonalInformationSessionsController < ApplicationController
     render({ :template => "personal_information_sessions/sign_in.html.erb" })
   end
 
+
+
+
   def create_cookie
     personal_information = PersonalInformation.where({ :email => params.fetch("query_email") }).at(0)
     

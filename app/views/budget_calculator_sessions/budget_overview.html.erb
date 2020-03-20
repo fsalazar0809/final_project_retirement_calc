@@ -3,23 +3,11 @@
 <h6> To better estimate the size of your nest egg, we will need to understand your lifestyle after retirement. Please fill out the items below based on the cost / figures you expect to have in retirement on a MONTHLY basis (all figures in USD, please). </h6>
 
 <div>
-  <h6> ***Please enter MONTLY figures.***</h6>
+  <h6> ***Please enter MONTHLY figures.***</h6>
 </div>
 <form action="/insert_budget_calculator" method="post">
 
 <h3> Housing Expenses </h3>
-                 
-  <div>
-    <label for="monthly_income__salarywages_box">Income / Wages</label>
-      
-    <input type="text" id="monthly_income__salarywages_box" name="query_monthly_income__salarywages">
-  </div>
-         
-  <div>
-    <label for="monthly_income__other_income_box">Other Income</label>
-      
-    <input type="text" id="monthly_income__other_income_box" name="query_monthly_income__other_income">
-  </div>
          
   <div>
     <label for="housing_expenses__mortgage_box">Rent / Mortgage</label>
@@ -156,14 +144,6 @@
     <label for="monthly_savings__investments_box">Investments (Stock Market, Bonds, Mutual funds, etc.) </label>
       
     <input type="text" id="monthly_savings__investments_box" name="query_monthly_savings__investments">
-  </div>
-
-  <h3> Summary </h3>
-  <div>
-  Monthly Spend: <%= @salary %>
-  </div>
-  <div>
-  Annual Spend:
   </div>
   
     

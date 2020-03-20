@@ -1,2 +1,100 @@
-<h1> Summary </h1>
-<h3> <%= @monthly_budget %> </h3>
+<h1> Summary of Expected Spending in Retirement </h1>
+
+<h3> Overview of Entries </h3>
+
+<table border = "1">
+<tr>
+<th> Housing</th>
+<th> Transportation</th>
+<th> Education</th>
+<th> Food & Personal Expenses </th>
+<th> Savings </th>
+<th> </th>
+</tr>
+
+
+<tr>
+
+  <td>
+  <%= number_to_currency (@housing_expenses_budget_1) %>
+  </td>
+
+  <td>
+  <%= number_to_currency (@transportation_expenses_budget_2) %>
+  </td>
+
+  <td>
+  <%= number_to_currency (@educational_expenses_budget_3) %>
+  </td>
+
+  <td>
+  <%= number_to_currency (@food_personal_expenses_budget_4) %>
+  </td>
+
+  <td>
+  <%= number_to_currency (@savings_investments_budget_5) %>
+  </td>
+
+  <td> <a href = "/delete_budgetcalculator_account"> Delete </a> </td>
+
+</tr>
+
+</table>
+
+<h6> Monthly Spend: <%= number_to_currency(@monthly_budget) %> </h6>
+
+<h6> Annual Spend: <%= number_to_currency(@annual_budget)%> </h6>
+
+<h3> Detailed Overview </h3>
+  <h6> Budget ID: <%= @budget.id %> </h6>
+  <h6> User ID: <%= @budget.user_id%> </h6>
+
+<h3> Housing Expenses </h3> 
+ 
+  <h6> Rent/Mortgage: <%= number_to_currency (@budget.housing_expenses__mortgage) %> </h6> 
+  <h6> HOA Fees:<%= number_to_currency(@budget.housing_expenses__hoa_fees)%> </h6> 
+  <h6> Home Insurance / Rent Insurance:<%= number_to_currency(@budget.housing_expenses__home_insurance)%> </h6>
+  <h6> Housing - Repairs / Maintenance: <%= number_to_currency(@budget.housing_expenses__repairs_maintenance)%> </h6>
+  <h6> Utilities (Water, Gas, Electricity): <%= number_to_currency (@budget.housing_expenses__water__gas__electricity)%> </h6>
+  <h6> Entertainment (Cable, TV, Internet:<%=  number_to_currency(@budget.housing_expenses__cable__tv__internet)%> </h6>
+  <h6> Entertainment - Cell Phone: <%= number_to_currency(@budget.housing_expenses__phone_cell)%> </h6>
+ 
+<h3> Transportation Expenses </h3>   
+ 
+  <h6> Car Payment: <%= number_to_currency(@budget.transportation_expenses__car_payment)%> </h6>
+  <h6> Car Insurance: <%= number_to_currency (@budget.transportation_expenses__car_insurance) %> </h6>
+  <h6> Gas Fuel: <%= number_to_currency (@budget.transportation_expenses__gas__fuel)%> </h6>
+  <h6> Car Repairs: <%= number_to_currency (@budget.transportation_expenses__car_repairs)%> </h6>
+ 
+<h3>Educational Expenses </h3>    
+ 
+<h6> School Supplies: <%= number_to_currency (@budget.educational_expenses__school_supplies)%> </h6>
+  <h6> Student Loans: <%= number_to_currency (@budget.educational_expenses__student_loans) %> </h6>
+  <h6> School Tuition: <%= number_to_currency (@budget.educational_expenses__college_tuition) %> </h6>
+
+<h3>Food & Personal Expenses </h3>   
+ 
+  <h6> Groceries: <%= number_to_currency (@budget.food_and_personal__groceries__household) %> </h6>
+  <h6> Clothing: <%= number_to_currency (@budget.food_and_personal__clothing)%> </h6>
+  <h6> Entertainment: <%= number_to_currency (@budget.food_and_personal__entertainment)%> </h6>
+  <h6> Medical / Hospital: <%= number_to_currency (@budget.food_and_personal__medical)%> </h6>
+  <h6> Pet Supplies: <%= number_to_currency (@budget.food_and_personal__pet_supplies)%> </h6>
+  <h6> Miscellaneous Expenses: <%= number_to_currency (@budget.food_and_personal__other_expenses)%> </h6>
+
+<h3> Savings </h3>  
+  <h6> Emergency Fund Savings: <%= number_to_currency (@budget.monthly_savings__emergency_fund)%> </h6>
+  <h6> Investments (Stock Market, Bonds, Mutual funds, etc.): <%= number_to_currency(@budget.monthly_savings__investments) %> </h6>
+
+
+<form action="/personal_information_sign_up" >
+<button >
+Step 2: Personal Information
+</button>
+</form>
+
+<form action="/edit_budget" >
+<button >
+ Edit Budget
+</button>
+</form>
+
