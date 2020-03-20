@@ -51,13 +51,12 @@ class ApplicationController < ActionController::Base
   end
 
   def testing
-    @personal_information = PersonalInformation.where({:id => params.fetch(:id)}).at(0)
-
-    @expenses = BudgetCalculator.where({ :id => @personal_information.budget_id}).at(0)
+    personal_information = PersonalInformation.where({:id => params.fetch(:id)}).at(0)
+    @expenses = BudgetCalculator.where({ :id => personal_information.budget_id}).at(0)
 
     #create a blank view, render on front end, on render page call 54 & 55 --> instance variables @expenses.inspect#
   
-    render({ :template => "/layouts/testing.html.erb"})
+    render({ :template => "/budget_calculator_sessions/summary_2.html.erb"})
   end 
 
 end

@@ -35,5 +35,7 @@
 class BudgetCalculator < ApplicationRecord
   has_one :personal_information, :foreign_key => "budget_id", :dependent => :destroy
 
+
+
 end
 
