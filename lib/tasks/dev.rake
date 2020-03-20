@@ -1,15 +1,14 @@
 namespace(:dev) do
   desc "Hydrate the database with some dummy data to look at so that developing is easier"
   task({ :prime => :environment}) do
-     
-   User.destroy_all
-
+User.destroy_all
+ 
     u = User.new
     u.email = "bob@example.com"
     u.password = "password"
     u.save
     p u.errors.full_messages
-
+ 
     20.times do
       b = BudgetCalculator.new
       b.user_id = u.id
@@ -42,7 +41,7 @@ namespace(:dev) do
     
       pe = PersonalInformation.new
       pe.user_id = u.id
-
+ 
       pe.current_age = rand(62)
       pe.inflation_rate = rand(10)
       pe.life_expectancy = rand(18..150)
@@ -51,7 +50,7 @@ namespace(:dev) do
       pe.return_on_savings = rand (15)
       
       pe.save
-
+ 
       p pe.errors.full_messages
   end
 
